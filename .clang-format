@@ -1,0 +1,84 @@
+﻿---
+
+UseTab: Never
+IndentWidth: '4'
+ColumnLimit: 80
+
+---
+
+Language: Cpp
+Standard: Auto
+
+AccessModifierOffset: -4
+
+AlignAfterOpenBracket: Align
+AlignConsecutiveAssignments: 'true'
+AlignConsecutiveDeclarations: 'true'
+AlignEscapedNewlines: Left
+AlignOperands: 'true'
+AlignTrailingComments: 'true'
+
+AllowShortBlocksOnASingleLine: 'true'
+AllowShortCaseLabelsOnASingleLine: 'true'
+AllowShortFunctionsOnASingleLine: All
+AllowShortLoopsOnASingleLine: false
+AllowShortIfStatementsOnASingleLine: true
+
+AlwaysBreakAfterDefinitionReturnType: None
+AlwaysBreakAfterReturnType: None
+AlwaysBreakBeforeMultilineStrings: 'true'
+AlwaysBreakTemplateDeclarations: 'Yes'
+BinPackArguments: 'true'
+BinPackParameters: 'true'
+
+BreakBeforeBraces: Attach
+BreakBeforeTernaryOperators: 'false'
+BreakConstructorInitializers: AfterColon
+BreakInheritanceList: AfterColon
+
+IndentCaseLabels: 'true'
+IndentPPDirectives: AfterHash
+IndentWrappedFunctionNames: 'false'
+
+SortIncludes: 'true'
+SortUsingDeclarations: 'false'
+
+SpaceAfterCStyleCast: 'false'
+SpaceAfterTemplateKeyword: 'true'
+
+SpaceBeforeAssignmentOperators: 'true'
+SpaceBeforeCpp11BracedList: 'true'
+SpaceBeforeCtorInitializerColon: 'true'
+SpaceBeforeInheritanceColon: 'true'
+SpaceBeforeParens: ControlStatements
+SpaceBeforeRangeBasedForLoopColon: 'true'
+
+SpaceInEmptyParentheses: 'false'
+SpacesBeforeTrailingComments: '2'
+SpacesInAngles: 'false'
+SpacesInCStyleCastParentheses: 'false'
+SpacesInContainerLiterals: 'false'
+SpacesInParentheses: 'false'
+SpacesInSquareBrackets: 'false'
+
+CompactNamespaces: 'false'
+ConstructorInitializerAllOnOneLineOrOnePerLine: 'true'
+Cpp11BracedListStyle: 'false'
+DisableFormat: 'false'
+ExperimentalAutoDetectBinPacking: 'false'
+FixNamespaceComments: 'true'
+IncludeBlocks: Regroup
+
+
+KeepEmptyLinesAtTheStartOfBlocks: 'false'
+MaxEmptyLinesToKeep: '1'
+NamespaceIndentation: None
+PointerAlignment: Left
+ReflowComments: 'true'
+
+# SpaceAfterLogicalNot: 'false'
+# AllowShortLambdasOnASingleLine: All
+# AlignConsecutiveMacros: 'true' - breaks vim
+# AllowAllConstructorInitializersOnNextLine: 'true'
+# AllowAllParametersOfDeclarationOnNextLine: 'true'
+# AllowAllArgumentsOnNextLine: 'true'
