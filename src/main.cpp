@@ -14,7 +14,7 @@ int main(int argc, char* argv[]) {
     std::string title { "" };
 
     if (argc == 2) {
-        if (std::string { argv[1] } == "-h") {
+        if (std::string { argv[1] } == "--help") {
             std::cout << usage_string << std::endl;
             return 0;
         } else {
