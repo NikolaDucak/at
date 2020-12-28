@@ -29,14 +29,15 @@ private:
     void quit();
     void reset();
 
-    std::string             m_title;
-    tui::point              m_position;
     stopwatch               m_sw;
+    tui::point              m_position;
     std::condition_variable m_cv;
     std::thread             m_display_thread;
     std::mutex              m_mutex;
     bool                    m_running;
     bool                    m_should_update;
+    std::string             m_title;
+    duration_t              m_final_time;
 };
 
 }  // namespace at

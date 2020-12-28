@@ -13,10 +13,9 @@ tui::point get_new_center() {
 }  // namespace
 
 at::at(const std::string& title) :
-    m_title { title },
-    m_position { 10, 10 },
     m_display_thread { [this]() { update(); } },
-    m_running { true } {
+    m_running { true },
+    m_title { title } {
     m_sw.start();
     tui::init_terminal();
     set_position(get_new_center());
@@ -55,6 +54,7 @@ void at::quit() {
         std::lock_guard<std::mutex> lock(m_mutex);
         m_should_update = true;
         m_running       = false;
+        m_final_time    = m_sw.elapsed_time();
         m_sw.stop();
         tui::end_terminal();
     }
