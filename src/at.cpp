@@ -84,6 +84,6 @@ void at::set_position(const tui::point& position) {
     m_cv.notify_one();
 }
 
-duration_t at::final_time() { return m_sw.elapsed_time(); }
+duration_t at::final_time() { return m_final_time; }
 
 }  // namespace at
