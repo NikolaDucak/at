@@ -4,7 +4,7 @@ FLAGS = -I./inc/ -lpthread -lncurses -Wall -Wextra -Wpedantic
 INSTAL_DIR = /usr/local/bin
 
 all:
-	$(COMPILER) $(FLAGS) src/*.cpp -o $(PROGRAM_NAME)
+	$(COMPILER) src/*.cpp -o $(PROGRAM_NAME) $(FLAGS) 
 
 debug:
 	$(COMPILER) $(FLAGS) src/*.cpp -o $(PROGRAM_NAME)_debug -g
