@@ -1,6 +1,6 @@
 PROGRAM_NAME = at
 COMPILER = g++
-FLAGS = -I./inc/ -lpthread -lncurses -Wall -Wextra -Wpedantic
+FLAGS = -I./inc/ -lpthread -lncurses -Wall -Wextra -Wpedantic -lboost_timer
 INSTAL_DIR = /usr/local/bin
 
 all:

@@ -1,7 +1,6 @@
 #ifndef __AT_AT_H__
 #define __AT_AT_H__
 
-#include "../inc/stopwatch.h"
 #include "../inc/tui.h"
 
 #include <chrono>
@@ -9,7 +8,13 @@
 #include <mutex>
 #include <thread>
 
+#include <boost/timer/timer.hpp>
+
 namespace at {
+
+using seconds_t = std::chrono::duration<long, std::ratio<1, 1>>;
+
+std::string human_readable_time(seconds_t duration);
 
 /**
  * Main class holding all the logic for manipulating
@@ -21,15 +26,16 @@ public:
     ~at();
 
     void       input_loop();
-    duration_t final_time();
+    seconds_t final_time();
 
 private:
     void update();
     void set_position(const tui::point& posiiton);
     void quit();
     void reset();
+    void toggle_pause();
 
-    stopwatch               m_sw;
+    boost::timer::cpu_timer m_sw;
     tui::point              m_position;
     std::condition_variable m_cv;
     std::thread             m_display_thread;
@@ -37,7 +43,7 @@ private:
     bool                    m_running;
     bool                    m_should_update;
     std::string             m_title;
-    duration_t              m_final_time;
+    seconds_t               m_final_time;
 };
 
 }  // namespace at
