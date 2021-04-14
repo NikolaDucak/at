@@ -7,15 +7,17 @@ Running `$ at` will display stopwatch in the middle of the terminal while `$ at 
 ```
 at [title]
 Runtime: 
-    d : refresh display 
-    q : exit 
-    r : restart stopwatch
+    d        : refresh display 
+    <space>  : play/pause
+    r        : restart
+    q        : exit 
 ```
 
 ## Installation
-Make sure you have ncurses development library installed.On debian like system you can get ncurses with:
+Make sure you have pthread, ncurses & boost timer development library installed. \
+On debian like system you can get the dependancies with:
 ```
-$ sudo apt install libncurses6-dev
+$ sudo apt install libpthread-stubs0-dev libncurses6-dev libboost-timer1.67-dev
 ```
 
 Then install AT with:
