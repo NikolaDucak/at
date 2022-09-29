@@ -6,6 +6,7 @@ namespace tui {
 
 void init_terminal() {
     initscr();
+    timeout(1000);
     noecho();
     curs_set(0);
     raw();
