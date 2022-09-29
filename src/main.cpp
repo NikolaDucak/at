@@ -2,41 +2,51 @@
 
 #include <iostream>
 
-auto usage_string {
-R"(Usage: at [title]
+static const auto usage_string {
+R"(Usage: at [--help] [title]
 Runtime: 
-    d : refresh display 
-    q : exit 
-    r : restart stopwatch)"
+    ' ' <space> : pause
+    d           : redraw display 
+    q           : exit 
+    r            : restart stopwatch)"
 };
 
-int main(int argc, char* argv[]) {
-    std::string title { "" };
+static const bool is_help_requested(int argc, char* argv[]) {
+   const auto found_at = std::find(argv, argv + argc, std::string{"--help"});
+   return found_at != (argv + argc);
+}
 
-    if (argc == 2) {
-        if (std::string { argv[1] } == "--help") {
-            std::cout << usage_string << std::endl;
-            return 0;
-        } else {
-            title = argv[1];
-        }
-    } else if (argc > 2) {
-        std::cout << usage_string << std::endl;
-        return 1;
+static const std::string combine_arguments_to_title(int argc, char* argv[]) {
+    std::string result;
+    // skip first argument
+    for (int i = 1; i < argc; i++) {
+        result += argv[i];
+        result += ' ';
     }
 
+    // remove trailing ' ' if added above
+    if (not result.empty()) result.pop_back();
+
+    return result;
+}
+
+int main(int argc, char* argv[]) {
+    if (is_help_requested(argc, argv)) {
+        std::cout << usage_string << std::endl;
+        return 0;
+    } 
+    const auto title = combine_arguments_to_title(argc, argv);
+
     // run stopwatch & configure terminal
-    at::at d { title };
+    at::at app { title };
 
     // loop until user quits
-    d.input_loop();
+    app.input_loop();
 
-    // quiting dispables ncurses terminal so regular cout
-    // is fine
+    // quiting dispables ncurses terminal so regular cout is fine
     if (title.empty())
-        std::cout << at::human_readable_time(d.final_time()) << std::endl;
+        std::cout << at::human_readable_time(app.final_time()) << std::endl;
     else
-        std::cout <<  title << " -> " << at::human_readable_time(d.final_time())
-                  << std::endl;
+        std::cout << title << " -> " << at::human_readable_time(app.final_time()) << std::endl;
 }
 
