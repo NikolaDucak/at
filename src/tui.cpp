@@ -1,6 +1,7 @@
 #include "../inc/tui.h"
-#include <stdexcept>
+
 #include <sstream>
+#include <stdexcept>
 
 namespace tui {
 
@@ -24,9 +25,7 @@ std::string cursor_at(uint x, uint y) {
     return ss.str();
 }
 
-void print_at(uint x, uint y, const std::string& str) {
-    mvprintw(y, x, str.c_str());
-}
+void print_at(uint x, uint y, const std::string& str) { mvprintw(y, x, str.c_str()); }
 
 void clear() { erase(); }
 

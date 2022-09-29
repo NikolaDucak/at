@@ -3,12 +3,11 @@
 
 #include "../inc/tui.h"
 
+#include <boost/timer/timer.hpp>
 #include <chrono>
 #include <condition_variable>
 #include <mutex>
 #include <thread>
-
-#include <boost/timer/timer.hpp>
 
 namespace at {
 

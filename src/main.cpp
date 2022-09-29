@@ -3,7 +3,7 @@
 #include <iostream>
 
 static const auto usage_string {
-R"(Usage: at [--help] [title]
+    R"(Usage: at [--help] [title]
 Runtime: 
     ' ' <space> : pause
     d           : redraw display 
@@ -12,8 +12,8 @@ Runtime:
 };
 
 static const bool is_help_requested(int argc, char* argv[]) {
-   const auto found_at = std::find(argv, argv + argc, std::string{"--help"});
-   return found_at != (argv + argc);
+    const auto found_at = std::find(argv, argv + argc, std::string { "--help" });
+    return found_at != (argv + argc);
 }
 
 static const std::string combine_arguments_to_title(int argc, char* argv[]) {
@@ -34,7 +34,7 @@ int main(int argc, char* argv[]) {
     if (is_help_requested(argc, argv)) {
         std::cout << usage_string << std::endl;
         return 0;
-    } 
+    }
     const auto title = combine_arguments_to_title(argc, argv);
 
     // run stopwatch & configure terminal
@@ -47,6 +47,6 @@ int main(int argc, char* argv[]) {
     if (title.empty())
         std::cout << at::human_readable_time(app.final_time()) << std::endl;
     else
-        std::cout << title << " -> " << at::human_readable_time(app.final_time()) << std::endl;
+        std::cout << title << " -> " << at::human_readable_time(app.final_time())
+                  << std::endl;
 }
-

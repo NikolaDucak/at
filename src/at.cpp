@@ -1,7 +1,7 @@
 #include "../inc/at.h"
 
-#include <sstream>
 #include <iomanip>
+#include <sstream>
 
 namespace at {
 
@@ -14,17 +14,15 @@ tui::point get_new_center() {
 }
 
 inline std::chrono::seconds to_seconds(boost::timer::cpu_times times) {
-  return std::chrono::duration_cast<std::chrono::seconds>(
-      std::chrono::nanoseconds(times.wall));
+    return std::chrono::duration_cast<std::chrono::seconds>(
+        std::chrono::nanoseconds(times.wall));
 }
 
-// print the string so that the center character of that string lands on the desired position 
-// instead the first char landing at the desired position
+// print the string so that the center character of that string lands on the desired
+// position instead the first char landing at the desired position
 inline void print_centered_at(const tui::point& at, const std::string& str) {
-    const auto print_position = tui::point { 
-        static_cast<int>(at.x - str.length() / 2),
-        at.y
-    };
+    const auto print_position =
+        tui::point { static_cast<int>(at.x - str.length() / 2), at.y };
     tui::print_at(print_position.x, print_position.y, str);
 }
 
@@ -43,15 +41,13 @@ std::string human_readable_time(seconds_t duration) {
 
     std::stringstream ss;
     ss.fill('0');
-    ss << std::setw(2) << hr.count() << " : " << std::setw(2) << min.count()
-       << " : " << std::setw(2) << sec.count();
+    ss << std::setw(2) << hr.count() << " : " << std::setw(2) << min.count() << " : "
+       << std::setw(2) << sec.count();
 
     return ss.str();
 }
 
-at::at(const std::string& title) :
-    m_running { true },
-    m_title { title } {
+at::at(const std::string& title) : m_running { true }, m_title { title } {
     m_sw.start();
     tui::init_terminal();
     set_position(get_new_center());
@@ -67,7 +63,7 @@ void at::input_loop() {
             case 'q': quit(); break;
             case 'r': reset(); break;
             case ' ': toggle_pause(); break;
-            default: break; // input timed out
+            default: break;  // input timed out
         }
     }
 }
@@ -85,9 +81,7 @@ void at::quit() {
     tui::end_terminal();
 }
 
-void at::reset() {
-    m_sw.start();
-}
+void at::reset() { m_sw.start(); }
 
 void at::toggle_pause() {
     if (m_sw.is_stopped()) {
